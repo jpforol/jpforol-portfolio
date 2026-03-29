@@ -4,10 +4,17 @@ import os
 
 app = Flask(__name__)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 def load_portfolio_data():
     data = {}
-    data_dir = os.path.join(os.path.dirname(__file__), "data")
+    data_dir = os.path.join(BASE_DIR, "data")
+
+    print(f"[DEBUG] BASE_DIR: {BASE_DIR}")
+    print(f"[DEBUG] data_dir: {data_dir}")
+    print(f"[DEBUG] Existe? {os.path.exists(data_dir)}")
+
     if os.path.exists(data_dir):
         for lang_folder in os.listdir(data_dir):
             lang_path = os.path.join(data_dir, lang_folder)
@@ -24,6 +31,8 @@ def load_portfolio_data():
                                 data[lang_folder].update(file_data)
                             else:
                                 data[lang_folder][section] = file_data
+
+    print(f"[DEBUG] Idiomas carregados: {list(data.keys())}")
     return data
 
 
@@ -33,8 +42,6 @@ PORTFOLIO_DATA = load_portfolio_data()
 # ─────────────────────────────────────────────
 #  ROUTES
 # ─────────────────────────────────────────────
-
-
 @app.route("/")
 def index():
     return render_template("index.html")
