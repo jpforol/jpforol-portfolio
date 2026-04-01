@@ -111,12 +111,15 @@ function renderAbout(about) {
     .map(
       (s) => `
     <div class="stat-card">
-      <span class="stat-value">${s.value}</span>
+      <span class="stat-value" data-value="${s.value}">0</span>
       <span class="stat-label">${s.label}</span>
     </div>
   `,
     )
     .join("");
+
+  // Trigger stat animation
+  animateStats();
 
   // Skills
   const skillsEl = document.getElementById("skills-grid");
@@ -315,4 +318,70 @@ function setupActiveNavHighlight() {
 function setText(id, value) {
   const el = document.getElementById(id);
   if (el) el.textContent = value;
+}
+
+// ─────────────────────────────────────────────
+//  STATS ANIMATION
+// ─────────────────────────────────────────────
+function animateStats() {
+  const statsElements = document.querySelectorAll(".stat-value");
+  if (!statsElements.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startNumberAnimation(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  statsElements.forEach((el) => observer.observe(el));
+}
+
+function startNumberAnimation(el) {
+  const targetText = el.getAttribute("data-value");
+  const match = targetText.match(/([\d.]+)/);
+  if (!match) {
+    el.textContent = targetText;
+    return;
+  }
+
+  const numStr = match[1];
+  const target = parseFloat(numStr);
+  const prefix = targetText.substring(0, match.index);
+  const suffix = targetText.substring(match.index + numStr.length);
+  const isFloat = numStr.includes(".");
+
+  const duration = 2000;
+  let start = null;
+
+  function update(timestamp) {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+
+    // Ease-out expo function (fast start, slow end)
+    const easeOutOut = 1 - Math.pow(1 - progress, 3);
+
+    let currentVal = target * easeOutOut;
+
+    if (isFloat) {
+      currentVal = currentVal.toFixed(1);
+    } else {
+      currentVal = Math.floor(currentVal);
+    }
+
+    el.textContent = `${prefix}${currentVal}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = targetText;
+    }
+  }
+
+  requestAnimationFrame(update);
 }

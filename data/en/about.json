@@ -1,9 +1,10 @@
 {
   "section_title": "About Me",
   "bio": [
-    "I am an RPA Software Developer with experience in process automation, working from requirements gathering and AS-IS process mapping to solution implementation and supporting deployment in production environments.",
-    "I work with platforms such as UiPath and Power Automate, as well as using languages like Python, C#, and VB.NET for integrations and customizations when needed. I am interested in transforming repetitive and inefficient processes into more structured and reliable digital solutions.",
-    "Throughout my experience, I have participated in the automation of several processes across finance, logistics, HR, and back-office areas, contributing to productivity gains and reduced operational errors."
+    "I am an RPA Software Developer with experience in process automation, covering everything from requirements gathering and AS-IS process mapping to solution implementation and production deployment support.",
+    "I have been working in the technology field since 2018, with previous experience as a Metrics and Requirements Analyst and as a Data & Analytics Solutions Architect.",
+    "I work with platforms such as UiPath and Power Automate, and use languages like Python, C#, and VB.NET for integrations and customizations when needed. I focus on transforming repetitive and inefficient processes into structured and reliable digital solutions.",
+    "Throughout my experience, I have contributed to the automation of processes across finance, logistics, HR, and back-office areas, driving productivity gains and reducing operational errors."
   ],
   "skills_title": "Core Skills",
   "skills": [
@@ -46,7 +47,7 @@
   ],
   "stats": [
     {
-      "value": "15+",
+      "value": "10+",
       "label": "Processes Automated"
     },
     {
@@ -54,8 +55,8 @@
       "label": "Hours Saved / Year"
     },
     {
-      "value": "2+",
-      "label": "Years of Experience"
+      "value": "1.5+",
+      "label": "Years of Experience in RPA Solutions"
     }
   ],
   "contact_title": "Contact",

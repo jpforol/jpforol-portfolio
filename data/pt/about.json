@@ -2,6 +2,7 @@
   "section_title": "Sobre Mim",
   "bio": [
     "Sou um RPA Software Developer com experiência em automação de processos, atuando desde o levantamento de requisitos e mapeamento AS-IS até a implementação de soluções e apoio na implantação em ambientes produtivos.",
+    "Tenho trabalhado na área de tecnologia desde 2018, com experiência anterior como Analista de Métricas e Requisitos e como Arquiteto de Soluções de Data & Analytics.",
     "Trabalho com plataformas como UiPath e Power Automate, além de utilizar linguagens como Python, C# e VB.NET para integrações e customizações quando necessário. Tenho interesse em transformar processos repetitivos e ineficientes em soluções digitais mais organizadas e confiáveis.",
     "Ao longo da minha experiência, participei da automação de diversos processos nas áreas de finanças, logística, RH e back-office, contribuindo para ganhos de produtividade e redução de erros operacionais."
   ],
@@ -46,7 +47,7 @@
   ],
   "stats": [
     {
-      "value": "15+",
+      "value": "10+",
       "label": "Processos Automatizados"
     },
     {
@@ -54,8 +55,8 @@
       "label": "Horas Economizadas / Ano"
     },
     {
-      "value": "2+",
-      "label": "Anos de Experiência"
+      "value": "1.5+",
+      "label": "Anos de Experiência em Soluções RPA"
     }
   ],
   "contact_title": "Contato",
