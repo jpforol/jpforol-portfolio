@@ -24,11 +24,33 @@ document.addEventListener("DOMContentLoaded", async () => {
 // ─────────────────────────────────────────────
 async function fetchPortfolio(lang) {
   if (portfolioCache[lang]) return portfolioCache[lang];
-  const res = await fetch(`/api/portfolio/${lang}`);
-  if (!res.ok) throw new Error(`API error: ${res.status}`);
-  const data = await res.json();
-  portfolioCache[lang] = data;
-  return data;
+
+  try {
+    const [navRes, heroRes, aboutRes, projectsRes] = await Promise.all([
+      fetch(`./data/${lang}/nav.json`),
+      fetch(`./data/${lang}/hero.json`),
+      fetch(`./data/${lang}/about.json`),
+      fetch(`./data/${lang}/projects.json`),
+    ]);
+
+    const navData = await navRes.json();
+    const hero = await heroRes.json();
+    const about = await aboutRes.json();
+    const projects = await projectsRes.json();
+
+    const data = {
+      ...navData,
+      hero,
+      about,
+      projects,
+    };
+
+    portfolioCache[lang] = data;
+    return data;
+  } catch (error) {
+    console.error("Error fetching portfolio data:", error);
+    throw error;
+  }
 }
 
 // ─────────────────────────────────────────────
